@@ -1,0 +1,14 @@
+# instalamos node
+FROM node:16
+#indicamos donde se guardan los datos
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+#exponer el puerto
+EXPOSE 8000
+
+CMD [ "npm","start" ]
