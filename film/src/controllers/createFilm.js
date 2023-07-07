@@ -1,6 +1,7 @@
 const Films = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  const response = await Films.create(req.body);
-  res.status(200).json(response);
+  const newFilm = await Films.create(req.body);
+  response(res, 201, newFilm);
 };

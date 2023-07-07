@@ -6,6 +6,7 @@ module.exports = {
     return films;
   },
   create: async (film) => {
+    // throw Error("Hay un error al momento de crear un film");
     //controlar que esten los campos
     //crear el film y devolver el resultado
     const newFilm = { _id: film._id, title: film.title };
