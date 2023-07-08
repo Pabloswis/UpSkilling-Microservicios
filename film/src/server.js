@@ -6,7 +6,7 @@ const server = express();
 server.use(morgan("dev"));
 server.use(express.json());
 
-server.use(require("./routes"));
+server.use("/films", require("./routes"));
 
 // Manejar errores donde no encuentra la ruta
 server.use("*", (req, res) => {

@@ -6,7 +6,7 @@ const server = express();
 server.use(morgan("dev"));
 server.use(express.json());
 // Configurar cors
-server.use(require("./routes"));
+server.use("/characters", require("./routes"));
 
 server.use("*", (req, res) => {
   res.status(404).send({ error: "Not Found" });
