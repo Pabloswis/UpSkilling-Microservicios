@@ -13,6 +13,6 @@ RUN npm install
 # . = fuente . = destino
 COPY . .
 # exponer solo un puerto
-EXPOSE 8000
+EXPOSE 8004
 # comando que utilizamos para correr la imagen
 CMD [ "npm","start" ]
