@@ -1,8 +1,8 @@
-const planets = require("./planets.json");
+const Planets = require("./planets.json");
 
 module.exports = {
   list: async () => {
-    return planets;
+    return Planets;
   },
   create: async (planet) => {
     const newPlanet = { _id: planet._id, name: planet.name };

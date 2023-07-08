@@ -1,7 +1,7 @@
 const Planet = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
   const updatedPlanet = await Planet.update(req.body);
-
-  res.status(200).json(updatedPlanet);
+  response(res, 200, updatedPlanet);
 };
