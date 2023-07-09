@@ -23,13 +23,13 @@ const characterSchema = new Schema({
 characterSchema.statics.list = async function () {
   return await this.find()
     .populate("homeworld", ["id", "name"])
-    .populate("films", ["id", "title"]);
+    .populate("films", ["id", "title", "director"]);
 };
 
 characterSchema.statics.get = async function (id) {
   return await this.findById(id)
     .populate("homeworld", ["id", "name"])
-    .populate("films", ["id", "title"]);
+    .populate("films", ["id", "title", "director"]);
 };
 
 characterSchema.statics.insert = async function (character) {

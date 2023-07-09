@@ -1,0 +1,40 @@
+Modulo 1 - Actividad 2 / Docker:
+
+1- Contruir la imagen apartir de la cual se van a armar los contenedores (dockerfile)
+	-✍️ docker build -t "nombre" "ruta donde esta dockerfile"
+	- docker build -t gateway . 
+	- docker build -t characters .
+	- docker build -t films .
+	- docker build -t planets .
+	- docker build -t database .
+
+2- correr la imagen creada
+	-✍️ docker run -p "puertoContenedor":"puertoPc" "nombre de la imagen"
+	- 👀 "-p" (indicamos que puerto del contenedor escucha en que puerto de nuestra pc)
+	- docker run -p 8000:8000 gateway
+	- docker run -p 8001:8001 characters
+	- docker run -p 8002:8002 films
+	- docker run -p 8003:8003 planets
+	- docker run -p 8004:8004 database
+
+
+3- Crear una red
+	-✍️ docker network create "nombre de la red"
+	- docker network create starwars
+
+4- conectar los contenedores a la red
+	-🏃modificar los target del middleware proxy del gateway
+	-👀 localhost => "nombre del contenedor"
+	-👀 crear una nueva imagen del gateway (con cada cambio que hagamos)
+	-✍️ docker run --network="nombre red" --name="nombreContenedor en la red" -p "puertoContenedor:puertoPc" "nombre contenedor"
+	- docker run --network=starwars --name=gateway -p 8000:8000 gateway
+	- docker run --network=starwars --name=characters -p 8001:8001 characters
+	- docker run --network=starwars --name=films -p 8002:8002 films
+	- docker run --network=starwars --name=planets -p 8003:8003 planets
+	- docker run --network=starwars --name=database -p 8004:8004 database
+
+5- ocultar los puertos de los contenedores con docker compose
+
+
+
+
