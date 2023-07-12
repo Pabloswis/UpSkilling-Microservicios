@@ -17,6 +17,7 @@ router.get("/:model/:id", validateModel, async (req, res) => {
 
 router.post("/:model/create", validateModel, async (req, res) => {
   const { model } = req.params;
+
   const response = await store[model].insert(req.body);
   res.status(201).json({
     message: "Created successfully!",
@@ -24,4 +25,24 @@ router.post("/:model/create", validateModel, async (req, res) => {
   });
 });
 
+router.put("/:model/update/:_id", async (req, res) => {
+  const { model, _id } = req.params;
+  const response = await store[model].update(_id, req.body);
+  res.status(200).json({
+    message: "Updated Successfully!",
+    data: response,
+  });
+});
+
+router.delete("/:model/delete/:_id", async (req, res) => {
+  const { model, _id } = req.params;
+  const response = await store[model].delete(_id);
+  res.status(200).json({
+    message: `Deleted ${response.deletedCount || null} from the database`,
+  });
+});
+
 module.exports = router;
+
+//Todo: Modularizar controladores
+//Todo: Agregar Middlewares de validaciones

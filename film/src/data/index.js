@@ -1,19 +1,29 @@
 const films = require("./films.json");
+const axios = require("axios");
 
 module.exports = {
   list: async () => {
-    //pedir los datos al servicio database para las films
-    return films;
+    const getData = await axios.get("http://localhost:8000/database/Film");
+    return getData.data;
   },
   create: async (film) => {
-    // throw Error("Hay un error al momento de crear un film");
-    //controlar que esten los campos
-    //crear el film y devolver el resultado
-    const newFilm = { _id: film._id, title: film.title };
-    return newFilm;
+    const postData = await axios.post(
+      "http://localhost:8000/database/Film/create",
+      film
+    );
+    return postData.data;
   },
-  update: async (film) => {
-    const updatedFilm = { data: "modificado con exito" };
-    return updatedFilm;
+  update: async (id, updatefilm) => {
+    const updatedFilm = await axios.put(
+      `http://localhost:8000/database/Film/update/${id}`,
+      updatefilm
+    );
+    return updatedFilm.data;
+  },
+  delete: async (id) => {
+    const deletedFilm = await axios.delete(
+      `http://localhost:8000/database/Film/delete/${id}`
+    );
+    return deletedFilm.data;
   },
 };

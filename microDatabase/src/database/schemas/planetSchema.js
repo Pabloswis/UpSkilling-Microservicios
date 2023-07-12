@@ -33,4 +33,14 @@ planetSchema.statics.insert = async function (planet) {
   return await this.create(planet);
 };
 
+planetSchema.statics.update = async function (_id, planet) {
+  const updating = await this.updateOne({ _id }, planet);
+  return updating;
+};
+
+planetSchema.statics.delete = async function (_id) {
+  const deleted = await this.deleteOne({ _id });
+  return deleted;
+};
+
 module.exports = planetSchema;

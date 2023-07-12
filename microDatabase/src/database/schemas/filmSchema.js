@@ -27,4 +27,14 @@ filmSchema.statics.insert = async function (film) {
   return await this.create(film);
 };
 
+filmSchema.statics.update = async function (_id, film) {
+  const updating = await this.updateOne({ _id }, film);
+  return updating;
+};
+
+filmSchema.statics.delete = async function (_id) {
+  const deleted = await this.deleteOne({ _id });
+  return deleted;
+};
+
 module.exports = filmSchema;

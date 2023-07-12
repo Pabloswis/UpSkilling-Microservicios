@@ -8,3 +8,6 @@ router.post("/", middleware.planetValidation, controllers.createPlanet);
 router.put("/", controllers.updatePlanet);
 
 module.exports = router;
+
+//ToDo: Completar las rutas
+//ToDo: agregar middlewares
