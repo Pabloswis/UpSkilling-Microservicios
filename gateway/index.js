@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const PORT = 8000;
 const app = express();
 
-const desarrollo = true;
+const desarrollo = false;
 const targets = {
   characters: desarrollo ? "http://localhost:8001" : "http://characters:8001",
   films: desarrollo ? "http://localhost:8002" : "http://films:8002",

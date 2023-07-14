@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const store = require("../database");
-const { validateModel } = require("../middlewares");
+const { validateModel, checkId } = require("../middlewares");
 const router = Router();
 
 router.get("/:model", validateModel, async (req, res) => {
@@ -28,21 +28,23 @@ router.post("/:model/create", validateModel, async (req, res) => {
 router.put("/:model/update/:_id", async (req, res) => {
   const { model, _id } = req.params;
   const response = await store[model].update(_id, req.body);
+
   res.status(200).json({
-    message: "Updated Successfully!",
-    data: response,
+    message: response.modifiedCount
+      ? "Updated Successfully!"
+      : "Update Unsatisfactory",
   });
 });
 
-router.delete("/:model/delete/:_id", async (req, res) => {
+router.delete("/:model/delete/:_id", checkId, async (req, res) => {
   const { model, _id } = req.params;
   const response = await store[model].delete(_id);
   res.status(200).json({
-    message: `Deleted ${response.deletedCount || null} from the database`,
+    message: `Deleted ${response.deletedCount} item from the database`,
   });
 });
 
 module.exports = router;
 
 //Todo: Modularizar controladores
-//Todo: Agregar Middlewares de validaciones
+//Todo: implementar manejo de errores y middlewares

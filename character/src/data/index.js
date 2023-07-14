@@ -15,11 +15,11 @@ module.exports = {
     return postData.data;
   },
   update: async (_id, updatedCharacter) => {
-    const newCharacter = await axios.put(
+    const response = await axios.put(
       `http://localhost:8000/database/Character/update/${_id}`,
       updatedCharacter
     );
-    return newCharacter.data;
+    return response.data;
   },
   delete: async (_id) => {
     const deletedCharacter = await axios.delete(
