@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const PORT = 8000;
 const app = express();
 
-const desarrollo = false;
+const desarrollo = true;
 const targets = {
   characters: desarrollo ? "http://localhost:8001" : "http://characters:8001",
   films: desarrollo ? "http://localhost:8002" : "http://films:8002",
@@ -42,4 +42,6 @@ app.use(
   })
 );
 
-app.listen(PORT, () => console.log(`Gateway on port: ${PORT} `));
+app.listen(PORT, () =>
+  console.log(`Seervise Gateway listening on port: ${PORT} `)
+);
