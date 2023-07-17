@@ -13,12 +13,17 @@ module.exports = {
     );
     return postData.data;
   },
-  update: async (planet) => {
-    const newPlanet = {
-      error: false,
-      message: "actualizado con exito",
-      data: { _id: planet._id, name: planet.name },
-    };
-    return newPlanet;
+  update: async (_id, updatePlanet) => {
+    const response = await axios.put(
+      `http://localhost:8000/database/Planet/update/${_id}`,
+      updatePlanet
+    );
+    return response.data;
+  },
+  delete: async (_id) => {
+    const deletedCharacter = await axios.delete(
+      `http://localhost:8000/database/Planet/delete/${_id}`
+    );
+    return deletedCharacter.data;
   },
 };

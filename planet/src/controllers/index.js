@@ -5,4 +5,5 @@ module.exports = {
   getPlanets: catchedAsync(require("./getPlanets")),
   createPlanet: catchedAsync(require("./createPlanet.js")),
   updatePlanet: catchedAsync(require("./updatePlanet")),
+  deletePlanet: catchedAsync(require("./deletePlanet")),
 };

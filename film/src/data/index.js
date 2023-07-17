@@ -13,16 +13,16 @@ module.exports = {
     );
     return postData.data;
   },
-  update: async (id, updatefilm) => {
+  update: async (_id, updatefilm) => {
     const updatedFilm = await axios.put(
-      `http://localhost:8000/database/Film/update/${id}`,
+      `http://localhost:8000/database/Film/update/${_id}`,
       updatefilm
     );
     return updatedFilm.data;
   },
-  delete: async (id) => {
+  delete: async (_id) => {
     const deletedFilm = await axios.delete(
-      `http://localhost:8000/database/Film/delete/${id}`
+      `http://localhost:8000/database/Film/delete/${_id}`
     );
     return deletedFilm.data;
   },

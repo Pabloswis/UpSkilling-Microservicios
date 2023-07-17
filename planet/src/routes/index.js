@@ -4,8 +4,9 @@ const middleware = require("../middlewares");
 const router = Router();
 
 router.get("/", controllers.getPlanets);
-router.post("/", middleware.planetValidation, controllers.createPlanet);
-router.put("/", controllers.updatePlanet);
+router.post("/create", middleware.planetValidation, controllers.createPlanet);
+router.put("/update/:_id", controllers.updatePlanet);
+router.delete("/delete/:_id", controllers.deletePlanet);
 
 module.exports = router;
 
